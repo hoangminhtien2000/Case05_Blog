@@ -1,0 +1,24 @@
+
+
+<div *ngFor="let b of blogs">
+  <p>{{b.id_blog}}</p>
+  <p>{{b.name_blog}}</p>
+  <p>{{b.content}}</p>
+<!--  <p>{{b.content_full}}</p>-->
+  <img src="{{b.img_blog}}" width="220" height="300">
+  <p>{{b.like1}}</p>
+  <p>{{b.category.name_category}}</p>
+<!--  <p >{{b.category.comments.length}}</p>-->
+  <div *ngFor="let c of b.comments">
+          <p>{{c.content_comment}}</p>
+    </div>
+    <p>
+      <button type="button" class="btn btn-danger" routerLink="/showdetailblog/{{b.id_blog}}">Show detail Blog</button>
+    </p>
+<!--  <p>-->
+<!--    <button type="button" class="btn btn-warning" routerLink="/edit/{{p.id}}">Edit</button>-->
+<!--  </p>-->
+<!--  <p>-->
+<!--    <button type="button" class="btn btn-danger" (click)="delete(p.id)">Delete</button>-->
+<!--  </p>-->
+</div>

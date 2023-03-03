@@ -12,8 +12,8 @@ export class BlogService {
 
   }
 
-  createProduct(blog:Blog): Observable<Blog> {
-    return this.http.post<Blog>("http://localhost:8080/blogs", blog);
+  createBlog(blog:any): Observable<any> {
+    return this.http.post<any>("http://localhost:8080/blogs", blog);
   }
 
   getAll() :Observable<Blog[]>{
@@ -28,7 +28,7 @@ export class BlogService {
     return this.http.get<Blog>(`http://localhost:8080/blogs/${id}`);
   }
 
-  editProduct(blog: Blog): Observable<Blog> {
+  editBlog(blog: Blog): Observable<Blog> {
     return this.http.put<Blog>("http://localhost:8080/blogs", blog);
   }
 

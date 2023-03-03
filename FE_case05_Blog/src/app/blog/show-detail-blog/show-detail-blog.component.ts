@@ -12,7 +12,8 @@ import {BlogService} from "../../service/BlogService";
 export class ShowDetailBlogComponent {
   id: any;
   blog: Blog | undefined;
-  formEdit !: FormGroup;
+  formDetailBlog !: FormGroup;
+  like3!: number;
 
   constructor(private route: ActivatedRoute, private blogService: BlogService, private router: Router) {
   }
@@ -22,18 +23,34 @@ export class ShowDetailBlogComponent {
     if (this.id != null) {
       this.blogService.findById(+this.id).subscribe((data) => {
         this.blog = data;
-        this.formEdit = new FormGroup({
-          id_blog: new FormControl(this.blog?.id_blog),
-          name_blog: new FormControl(this.blog?.name_blog),
-          content: new FormControl(this.blog?.content),
-          content_full: new FormControl(this.blog?.content_full),
-          img_blog: new FormControl(this.blog?.img_blog),
-          like1: new FormControl(this.blog?.like1),
-          category: new FormControl(this.blog?.category.name_category),
-          comments: new FormControl(this.blog?.comments[0].content_comment)
-        })
+        // this.formDetailBlog = new FormGroup({
+        //   id_blog: new FormControl(this.blog?.id_blog),
+        //   name_blog: new FormControl(this.blog?.name_blog),
+        //   content: new FormControl(this.blog?.content),
+        //   content_full: new FormControl(this.blog?.content_full),
+        //   img_blog: new FormControl(this.blog?.img_blog),
+        //   like1: new FormControl(this.blog?.like1),
+        //   category: new FormControl(this.blog?.category.name_category),
+        //   comments: new FormControl(this.blog?.comments),
+        //   // comments: new FormGroup({
+        //   //   id_comments: new FormControl(),
+        //   //   content_comment: new FormControl(),
+        //   // }),
+        // })
+        console.log(this.formDetailBlog.value.comments);
       })
     }
   }
+
+  // like() {
+  //   console.log(this.formDetailBlog.value.like1.getValue())
+  //   this.formDetailBlog.value.like1.setValue(this.formDetailBlog.value.like1.getValue()+1);
+  //   this.blogService.editBlog(this.formDetailBlog.value).subscribe((data) => {
+  //     this.blog = data;
+  //     // this.router.navigate([`showdetailblog/`+this.formDetailBlog.value.id_blog]);
+  //
+  //   })
+  //
+  // }
 
 }
